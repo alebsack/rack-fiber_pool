@@ -1,4 +1,3 @@
-# The new homepage is https://github.com/alebsack/rack-fiber_pool
 
 rack-fiber_pool
 ---------------
