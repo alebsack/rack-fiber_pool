@@ -15,7 +15,8 @@ module Rack
       yield @fiber_pool if block_given?
     end
 
-    def call(env)
+    def call(parent_env)
+      env = parent_env.dup
       call_app = lambda do
         env['async.orig_callback'] = env.delete('async.callback')
         begin
