@@ -1,4 +1,6 @@
-raise LoadError, "Ruby 1.9.1 only" if RUBY_VERSION < '1.9.1'
+# encoding: utf-8
+
+fail LoadError, 'Ruby 1.9.1 only' if RUBY_VERSION < '1.9.1'
 
 require 'sinatra/base'
 require 'fiber'
@@ -10,14 +12,12 @@ require 'rack/fiber_pool'
 # rackup -s thin app.rb
 # http://localhost:9292/test
 class App < Sinatra::Base
-
   use Rack::FiberPool
 
   set :root, File.dirname(__FILE__)
 
   get '/test' do
-    content_type "text/plain"
+    content_type 'text/plain'
     body "Hello world from #{Fiber.current}"
   end
-
 end

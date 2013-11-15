@@ -1,6 +1,5 @@
-source :rubygems
+source 'https://rubygems.org'
 
-gem 'rack'
-gem 'minitest'
-gem 'sinatra'
-gem 'thin'
+gemspec
+
+gem 'coveralls'
