@@ -1,7 +1,6 @@
-
 rack-fiber_pool
 ===============
-[![Dependency Status](https://gemnasium.com/alebsack/rack-fiber_pool.png)](https://gemnasium.com/alebsack/rack-fiber_pool) [![Build Status](https://travis-ci.org/alebsack/rack-fiber_pool.png?branch=master)](https://travis-ci.org/alebsack/rack-fiber_pool) [![Code Climate](https://codeclimate.com/github/alebsack/rack-fiber_pool.png)](https://codeclimate.com/github/alebsack/rack-fiber_pool)
+[![Dependency Status](https://gemnasium.com/alebsack/rack-fiber_pool.png)](https://gemnasium.com/alebsack/rack-fiber_pool) [![Coverage Status](https://coveralls.io/repos/alebsack/rack-fiber_pool/badge.png)](https://coveralls.io/r/alebsack/rack-fiber_pool) [![Build Status](https://travis-ci.org/alebsack/rack-fiber_pool.png?branch=master)](https://travis-ci.org/alebsack/rack-fiber_pool) [![Code Climate](https://codeclimate.com/github/alebsack/rack-fiber_pool.png)](https://codeclimate.com/github/alebsack/rack-fiber_pool)
 
 A Rack middleware component which runs each request in a Fiber from a pool of Fibers.
 
