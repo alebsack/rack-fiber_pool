@@ -1,6 +1,7 @@
 
 rack-fiber_pool
----------------
+===============
+[![Dependency Status](https://gemnasium.com/alebsack/rack-fiber_pool.png)](https://gemnasium.com/alebsack/rack-fiber_pool) [![Build Status](https://travis-ci.org/alebsack/rack-fiber_pool.png?branch=master)](https://travis-ci.org/alebsack/rack-fiber_pool) [![Code Climate](https://codeclimate.com/github/alebsack/rack-fiber_pool.png)](https://codeclimate.com/github/alebsack/rack-fiber_pool)
 
 A Rack middleware component which runs each request in a Fiber from a pool of Fibers.
 
@@ -13,9 +14,7 @@ Requirements
 Usage
 =======
 
-Add a require and use statement to your Rack app.  See example/app.rb for a simple Sinatra app
-which illustrates proper usage.  In general, you want the FiberPool to be inserted as early as
-possible in the middleware pipeline.
+Add a require and use statement to your Rack app.  See example/app.rb for a simple Sinatra app which illustrates proper usage.  In general, you want the FiberPool to be inserted as early as possible in the middleware pipeline.
 
 Options
 =======
@@ -62,9 +61,11 @@ Changes
 ==========
 
 0.9.3 - fix incompatibility with sinatra streaming, new maintainer (alebsack)
+1.0.0.beta.1 - Refactor, maintaining compatibility
 
-
-Author
+Authors
 ======
+
+Adam Lebsack, [Github](http://github.com/alebsack), alebsack AT gmail.com.
 
 Mike Perham, [Twitter](http://twitter.com/mperham), [Github](http://github.com/mperham), mperham AT gmail.com.
