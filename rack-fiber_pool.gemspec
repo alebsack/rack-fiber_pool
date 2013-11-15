@@ -6,22 +6,15 @@ Gem::Specification.new do |spec|
   spec.authors = ["Mike Perham", 'Adam Lebsack']
   spec.date = Time.now.utc.strftime("%Y-%m-%d")
   spec.email = %w(mperham@gmail.com alebsack@gmail.com)
-  spec.files = [
-    "LICENSE",
-    "README.md",
-    "Rakefile",
-    "example/app.rb",
-    "lib/fiber_pool.rb",
-    "lib/rack/fiber_pool.rb",
-  ]
   spec.homepage = "http://github.com/alebsack/rack-fiber_pool"
   spec.rdoc_options = ["--charset=UTF-8"]
   spec.require_paths = ["lib"]
   spec.summary = spec.description = "Rack middleware to run each request within a Fiber"
-  spec.test_files = [
-    "test/helper.rb",
-    "test/test_rack-fiber_pool.rb"
-  ]
+
+  spec.files         = `git ls-files`.split("\n")
+  spec.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  spec.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency 'rack'
   spec.add_runtime_dependency 'fiberpool'
