@@ -22,7 +22,6 @@ module Rack
       @rescue_exception = options[:rescue_exception] || proc do |env, e|
         [500, {}, ["#{e.class.name}: #{e.message.to_s}"]]
       end
-      yield @fiber_pool if block_given?
     end
 
     def call(parent_env)

@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name = "rack-fiber_pool"
-  spec.version = '1.0.0.beta.1'
+  spec.version = '1.0.0.beta.2'
   spec.authors = ["Mike Perham", 'Adam Lebsack']
   spec.date = Time.now.utc.strftime("%Y-%m-%d")
   spec.email = %w(mperham@gmail.com alebsack@gmail.com)
@@ -17,7 +17,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency 'rack'
-  spec.add_runtime_dependency 'fiberpool'
 
   spec.add_development_dependency 'thin', '~> 1.6.1'
   spec.add_development_dependency 'em-synchrony'
