@@ -12,8 +12,10 @@ module Rack
     # @param [Hash] opts the options to configure the fiber pool
     # @option opts [Fixnum] :size Size of the fiber pool (concurrent requests)
     # @option opts [String] :rescue_exception your custom exception handler
+    # @option opts [TrueClass|FalseClass] :remove_async_callback if remove Rack async.callback inside the fiber
     def initialize(app, options = {})
       @app = app
+      @options = options
       @fibers = []
       @count = options[:size] || SIZE
       @count.times do
@@ -36,11 +38,17 @@ module Rack
     private
 
     def request(env)
-      env['async.orig_callback'] = env.delete('async.callback')
+      env['async.fiberpool_callback'] ||= env['async.callback']
+      env.delete('async.callback') if @options[:remove_async_callback]
+      
       result = @app.call(env)
-      env['async.orig_callback'].call result
+      async_callback(env).call result
     rescue Exception => exc
-      env['async.orig_callback'].call @rescue_exception.call(env, exc)
+      async_callback(env).call @rescue_exception.call(env, exc)
+    end
+
+    def async_callback(env)
+      env['async.fiberpool_callback'] || env['async.callback']
     end
 
     def fiber_loop(block)
