@@ -8,7 +8,7 @@ describe Rack::FiberPool do
   class TestBuggyApp
     attr_accessor :result
     def call(env)
-      env['async.orig_callback'] = proc { |result| @result = result }
+      env['async.fiberpool_callback'] = proc { |result| @result = result }
       fail Exception, 'I\'m buggy! Please fix me.'
     end
   end
@@ -16,7 +16,16 @@ describe Rack::FiberPool do
   class TestApp
     attr_accessor :result
     def call(env)
-      env['async.orig_callback'] = proc { |result| @result = result }
+      env['async.fiberpool_callback'] = proc { |result| @result = result }
+      [200, { 'Content-Type' => 'text/plain' }, ['Hello world!']]
+    end
+  end
+
+  class OriginalSyncApp
+    attr_accessor :result
+
+    def call(env)      
+      env['async.callback'] = proc { |result| @result = result }
       [200, { 'Content-Type' => 'text/plain' }, ['Hello world!']]
     end
   end
@@ -37,6 +46,12 @@ describe Rack::FiberPool do
   describe 'size' do
     let(:app) { TestApp.new }
     let(:options) { { size: 5 } }
+    it { should eql [200, { 'Content-Type' => 'text/plain' }, ['Hello world!']] }
+  end
+
+  describe 'remove_async_callback' do
+    let(:app) { OriginalSyncApp.new }
+    let(:options) { { remove_async_callback: false } }
     it { should eql [200, { 'Content-Type' => 'text/plain' }, ['Hello world!']] }
   end
 
